@@ -161,9 +161,9 @@
     .cta-btn--about {
       width: auto;
       display: inline-block;
-      margin-top: 12px;
-      padding: 12px 28px;
-      font-size: 14px;
+      margin-top: 20px;
+      padding: 9px 22px;
+      font-size: 13px;
     }
 
     /* ─── Divider ───────────────────────────────────────────────── */
@@ -409,31 +409,40 @@
     }
 
     /* ─── About ─────────────────────────────────────────────────── */
+    .about-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      transition: background var(--transition), border-color var(--transition);
+    }
     .about-subtitle {
-      font-size: 13px;
-      font-weight: 500;
+      font-size: 12px;
+      font-weight: 600;
       color: var(--text-muted);
-      letter-spacing: 0.3px;
-      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 12px;
       transition: color var(--transition);
     }
     .about-tagline {
-      font-size: 18px;
-      font-style: italic;
-      font-weight: 400;
-      line-height: 1.6;
-      color: var(--text);
-      border-left: 3px solid var(--accent);
-      padding-left: 20px;
-      margin: 0 0 24px 0;
-      transition: color var(--transition), border-color var(--transition);
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 1.5;
+      color: var(--accent);
+      margin-bottom: 16px;
+      transition: color var(--transition);
     }
     .about-text {
       font-size: 15px;
       line-height: 1.75;
       color: var(--text);
-      max-width: 680px;
       transition: color var(--transition);
+    }
+    .about-card-footer {
+      display: flex;
+      justify-content: flex-end;
     }
 
     /* ─── Experience Timeline ───────────────────────────────────── */
@@ -878,13 +887,19 @@
     <main class="main" id="mainContent">
 
       <!-- About -->
-      <section class="section" id="section-about">
+      <section class="section" id="section-about" style="margin-bottom:56px">
         <div class="section-header">
           <h2 class="section-title" id="titleAbout">About</h2>
           <div class="section-line"></div>
         </div>
-        <p class="about-text" id="aboutText"></p>
-        <button class="cta-btn cta-btn--about" id="ctaBtnAbout">Get in Touch</button>
+        <div class="about-card">
+          <p class="about-subtitle" id="aboutSubtitle"></p>
+          <p class="about-tagline" id="aboutTagline"></p>
+          <p class="about-text" id="aboutText"></p>
+          <div class="about-card-footer">
+            <button class="cta-btn cta-btn--about" id="ctaBtnAbout">Get in Touch</button>
+          </div>
+        </div>
       </section>
 
       <!-- Experience -->
@@ -1025,6 +1040,8 @@
       $('titleEducation').textContent  = nav.education   || 'Education';
 
       /* ── About ── */
+      $('aboutSubtitle').textContent = data.subtitle || '';
+      $('aboutTagline').textContent = data.tagline || '';
       $('aboutText').textContent = data.summary || '';
 
       /* ── Experience ── */
